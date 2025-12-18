@@ -117,8 +117,8 @@ def rename_myanmar_id_cols():
         finally:
             conn.close()
 
-# rename_japan_id_cols()
-# rename_myanmar_id_cols()
+rename_japan_id_cols()
+rename_myanmar_id_cols()
 
 
 # ==============
@@ -159,8 +159,8 @@ def rename_sales_columns(db_path, table_name):
 
 
 
-# rename_sales_columns(jap_path, "japan_sales_data")
-# rename_sales_columns(myn_path, "myanmar_sales_data")
+rename_sales_columns(jap_path, "japan_sales_data")
+rename_sales_columns(myn_path, "myanmar_sales_data")
 
 
 # =========
@@ -183,12 +183,12 @@ def rename_name_cols(db_path, table):
            rename_column(db_path, table_name, "name", new_name)
         except Exception as e:
             pass
-
-#rename_name_cols(jap_path, japan_table_names)
-#rename_name_cols(myn_path, myanmar_table_names)
+            
+rename_name_cols(jap_path, japan_table_names)
+rename_name_cols(myn_path, myanmar_table_names)
 #rename_column(myn_path, "myanmar_items", "payment_name", "product_name")
-#rename_column(myn_path, "myanmar_items", "type", "category")
-#rename_column(myn_path, "myanmar_customers", "type", "membership")
+rename_column(myn_path, "myanmar_items", "type", "category")
+rename_column(myn_path, "myanmar_customers", "type", "membership")
 
 # JPY TO USD
 def jpy_to_usd():
@@ -203,7 +203,7 @@ def jpy_to_usd():
     conn.commit()
     conn.close()
 
-#jpy_to_usd()
+jpy_to_usd()
 
 
 
