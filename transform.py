@@ -48,8 +48,18 @@ def rename_column(db_path, table_name, old_name, new_name):
 
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
-    cursor.execute(f"ALTER TABLE {table_name} RENAME COLUMN {old_name} TO {new_name}")
-    conn.commit()
+
+    try:
+        cursor.execute(f"ALTER TABLE {table_name} RENAME COLUMN {old_name} TO {new_name}")
+        conn.commit()
+    except Exception as E:
+        if 'already exists' in str(e):
+            print("Table already exists.")
+        else:
+            print(f"Error creating table: {e}")
+        finally:
+        conn.close()  
+        
     conn.close()
 
 def rename_table(db_path, old_table_name, new_table_name):
